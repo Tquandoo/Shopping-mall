@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ShoppingContext } from "../../context/shopping-context";
+import { setSearchStatus } from "../../reducer/action";
 
 const statusList = ["In stock", "On Sale"]
 function Status() {
     const [collapse, setCollapse] = useState(false)
+    const { dispatch } = useContext(ShoppingContext)
     return (
         <div className="accordion-item py-2 d-flex flex-column justify-content-center">
             <h5 className="accordion-header">
@@ -17,8 +20,10 @@ function Status() {
                         {
                             statusList.map((status, index) => (
                                 <div key={index} className="form-check">
-                                    <input class="form-check-input" type="checkbox" value={status} />
-                                    <label class="form-check-label">{status}</label>
+                                    <input className="form-check-input" type="checkbox" value={status}
+                                    onChange={(e) => dispatch(setSearchStatus(e.target.value))}
+                                    />
+                                    <label className="form-check-label">{status}</label>
                                 </div>
                             ))
                         }
