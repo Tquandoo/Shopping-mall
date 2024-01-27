@@ -9,9 +9,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
     <BrowserRouter>
-    <ShoppingProvider>
-      <App />
-    </ShoppingProvider>
+      <ShoppingProvider>
+        <App />
+      </ShoppingProvider>
     </BrowserRouter>
   // </React.StrictMode>
 );
