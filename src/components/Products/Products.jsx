@@ -20,6 +20,8 @@ const Products = () => {
         dispatch(fetchDataThunkAction(limit))
     }
 
+        
+
     return (
         <div className="py-2 d-flex flex-column justify-content-center">
             <h5>Products</h5>

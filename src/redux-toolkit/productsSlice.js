@@ -20,6 +20,9 @@ const productsSlice = createSlice({
         state.status = 'idle'
         state.totalRows = action?.payload?.total
       })
+      .addCase(fetchDataThunkAction.rejected, (state, action) => {
+
+      })
   }
 })
 
