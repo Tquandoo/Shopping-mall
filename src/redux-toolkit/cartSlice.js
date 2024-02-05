@@ -25,6 +25,7 @@ const cartSlice = createSlice({
         subtotal: 0,
         shipping: 0,
         total: 0,
+        status: 'draft',
         orderDate: new Date().valueOf()
       },  
       cartDetails: [],

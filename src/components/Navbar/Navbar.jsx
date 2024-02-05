@@ -12,7 +12,7 @@ function Navbar() {
         <div className="container py-4 border-bottom">
             <div className="row">
                 <div className="col-sm-12 col-md-5 col-lg-3">
-                    <Link to={"/"} className="logo">
+                    <Link to={"/"} className="d-flex logo">
                         <SiKasasmart size={30} className="me-2" />
                         <span className="fs-4">Shopping Mall</span>
                     </Link>
@@ -41,7 +41,9 @@ function Navbar() {
                                 <FaShoppingCart size={23} className="me-2 text-secondary"/>
                                 )
                             }
-                        {/* <FaUser size={20} role="button" /> */}
+                            <Link to={'/dashboard/order-list'}>
+                                <FaUser size={20} role="button" className="text-dark"/>
+                            </Link>
                     </div>
                 </div>
             </div>

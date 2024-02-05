@@ -186,3 +186,20 @@ input[type='search']::placeholder {
   border-radius: 5px;
   padding: 2px 1px;
 }
+
+.user-product {
+  display: flex;
+  align-items: center;
+}
+
+.user-product a {
+  text-decoration: none;
+  color: #000; /* Màu chữ mặc định */
+  font-size: 15px; /* Kích thước font mặc định */
+  transition: color 0.3s, font-size 0.3s; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.user-product a:hover {
+  color: rgb(29, 153, 224) !important; /* Màu chữ khi hover */
+  font-size: 18px !important; /* Kích thước font khi hover */
+}

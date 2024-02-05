@@ -12,6 +12,7 @@ import * as yup from 'yup'
 import { yupResolver  } from '@hookform/resolvers/yup'
 import cartSlice from "../redux-toolkit/cartSlice";
 import { checkoutThunkAction } from "../redux-toolkit/cartSlice";
+import { useNavigate } from "react-router-dom";
 const schema = yup.object({
     fullname: yup.string().required(),
     mobile: yup.string().required(),
@@ -20,10 +21,12 @@ const schema = yup.object({
 })
 const CartPage = () => {
 
+    const navigate = useNavigate()
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     })
-    const { cartId, customerInfo, cartInfo, cartDetails } = useSelector(cartSelector)
+    const { cartId, cartInfo, cartDetails } = useSelector(cartSelector)
     const dispatch = useDispatch()
  
     const handleIncrementQuantity = (cartItem) => {
@@ -84,10 +87,17 @@ const CartPage = () => {
                     } 
                 }
                 dispatch(checkoutThunkAction(data))
-                toast.info('cart checkout succeed')
+                toast.info('cart checkout succeed' , {
+                    // khi chạy xong toast thì mới thực hiện navigate()
+                    onClose: () => {
+                        navigate('/')
+                    }
+                })
+
             }
-        })
+        }) 
     }
+
     return (
         <MainLayout>
             <div className="container mt-1">
