@@ -20,15 +20,31 @@ const productsSlice = createSlice({
         state.status = 'idle'
         state.totalRows = action?.payload?.total
       })
-      .addCase(fetchDataThunkAction.rejected, (state, action) => {
-
+      .addCase(addNewProductThunkAction.pending, (state, action) => {
+        
+      })
+      .addCase(addNewProductThunkAction.fulfilled, (state, action) => {
+          console.log(action.payload);
+          state.data.unshift(action.payload)
       })
   }
 })
 
-export const fetchDataThunkAction = createAsyncThunk('fetchDataThunkAction', async (limit) => {
+export const fetchDataThunkAction = createAsyncThunk('productList/fetchDataThunkAction', async (limit) => {
   let productListRes = await fetch(`https://dummyjson.com/products?limit=${limit}`)
   let data = await productListRes.json()
+  return data
+})
+
+export const addNewProductThunkAction = createAsyncThunk('productList/addNewProductThunkAction', async (newProduct) => {
+  let newProductRes = await fetch('https://dummyjson.com/products', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newProduct)
+  })
+  let data = await newProductRes.json()
   return data
 })
 

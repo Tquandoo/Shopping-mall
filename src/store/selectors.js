@@ -2,7 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { priceAfterDiscount } from "../helper/helper";
 
 export const filtersSelector = (state) => state.filters
-export const productsSelector = (state) => state.products
+export const productsSelector = (state) => state.products.data
 export const cartSelector = (state) => state.cart
 // lấy ra đúng cái orderList
 export const orderListSelector = (state) => state.orders.orderList
@@ -13,7 +13,7 @@ const filteredProductsSelector =  createSelector(
   filtersSelector,
   (products, filters) => {
     const { searchText, brand, category, price, status } = filters
-    let filteredProducts = [...products.data]
+    let filteredProducts = [...products]
     if(searchText) {
       filteredProducts = filteredProducts.filter((p) => p.title.toLowerCase().includes(searchText.toLowerCase()))
     }

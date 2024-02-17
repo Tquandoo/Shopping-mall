@@ -11,7 +11,6 @@ function Products() {
     const filteredProducts = useSelector(filteredProductsSelector)
     const totalRows = useSelector(state => state.products?.totalRows)
     useEffect(() => {
-      
         dispatch(fetchDataThunkAction(limit))
     }, [])
 

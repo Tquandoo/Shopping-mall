@@ -17,7 +17,7 @@ const OrderList = () => {
   const orderList = useSelector(orderListSelector) 
   const loading = useSelector(orderLoadingSelector)
 
-  console.log('orderList', orderList);
+  // console.log('orderList', orderList);
   return (
     <div className="container">
       <div className="row">
@@ -42,7 +42,7 @@ const OrderList = () => {
                     {
                       orderList?.map((order) => (
                         <tr key={order.id}>
-                            <td className="text-end align-middle">{dayjs(order.cartInfo.orderDate).format('MMM DD YYYY')}</td>
+                            <td className="text-end align-middle">{dayjs(Date(order.cartInfo.orderDate)).format('MMM DD YYYY')}</td>
                             <td className="text-end align-middle">
                               {order.cartDetails.length}
                             </td>

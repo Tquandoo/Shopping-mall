@@ -6,7 +6,7 @@ export default function Footer() {
         <footer className="container-fluid border-top py-3">
             <div className='container d-flex align-items-center justify-content-between'>
                 <div>
-                    <Link to={"/"} className="logo">
+                    <Link to={"/"} className="logo d-flex">
                         <SiKasasmart size={30} className="me-2" />
                         <span className="fs-4">Shopping Mall</span>
                     </Link>
